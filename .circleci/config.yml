@@ -1,1 +1,14 @@
 
+version: 2.1
+jobs:
+
+  build:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps: 
+    - checkout
+    - run:
+      name: Giving permissions
+      command: chmod +x mnvw
+    - run:
+      command: ./mnvx -Dmaven.test.skip=true package

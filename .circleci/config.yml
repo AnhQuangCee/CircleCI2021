@@ -13,6 +13,6 @@ jobs:
      - checkout
      - run:
         name: Giving permissions
-        command: chmod +x android/app
+        command: chmod +x mnvw
      - run:
-        command: ./android/app -Dmaven.test.skip=true package
+        command: ./mnvw -Dmaven.test.skip=true package

@@ -1,4 +1,3 @@
-
 version: 2.1
 
 orbs:
@@ -9,10 +8,43 @@ jobs:
   build:
     docker:
       - image: circleci/openjdk:stretch
-    steps: 
+    steps:
+      - checkout
+      - run:
+          name: Giving permissions
+          command: chmod +x mvnw
+      - run:   
+          command: ./mvnw -Dmaven.test.skip=true package
+
+  test-1:
+    docker:
+      - image: circleci/openjdk:stretch
+    steps:
      - checkout
      - run:
         name: Giving permissions
-        command: chmod +x mvnw
+        command: chmod +x mnvw
      - run:
-        command: ./mvnw -Dmaven.test.skip=true package
+        command: ./mvnw test
+
+workflows:
+  version: 2.1
+  build-test:
+    jobs:
+      - build
+      - test-1:
+          requires:
+            - build
+
+
+
+
+
+
+
+
+
+
+
+
+

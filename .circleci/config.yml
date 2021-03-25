@@ -38,8 +38,8 @@ workflows:
     jobs:
       - build
       - test-1:
-        requires:
-          - build
+          requires:
+            - build
 
 
 
